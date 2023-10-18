@@ -20,17 +20,11 @@ for file in datasetFolder:
         for i in range(0,len(linesInFile)):
             linesInFile[i] = " ".join(linesInFile[i].split())
 
-        # # removal of contraction
-        for i in range(0,len(linesInFile)):
-            newLine = ""
-            for word in linesInFile[i].split():
-                newLine = newLine+" "+contractions.fix(word)
-            linesInFile[i] = newLine+"\n"
         # # removal of special characters
         for i in range(0, len(linesInFile)):
             linesInFile[i] = re.sub(r"[^a-zA-Z0-9]+", ' ', linesInFile[i]).lower() + "\n"
         with open("FilesAfterPreProcess/"+file, "a") as newFile:
-            newFile.writelines(linesInFile)
+            newFile.writelines([el for el in linesInFile if len(el)>3])
 
         # tokenization
         tokens=[]

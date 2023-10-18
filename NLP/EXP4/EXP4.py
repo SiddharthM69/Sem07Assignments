@@ -40,5 +40,3 @@ chunker = RegexpParser("""
 # Print all parts of speech in above sentence
 output = chunker.parse(pos_tag(nltk.word_tokenize(listOfSentences[0])))
 print("After Extracting\n", output)
-
-
